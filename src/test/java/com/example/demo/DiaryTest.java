@@ -8,11 +8,15 @@ import org.junit.Before;
 import org.junit.After;
 import org.openqa.selenium.By;
 
+import java.io.File;
+import java.io.FileWriter;
+
 public class DiaryTest {
     private static ApplicationManager appManager;
     private static final String LINUX_GECKODRIVER_PATH = "/home/melok/Downloads/geckodriver";
-    private static final String WIN_GECKODRIVER_PATH = "C:\\Users\\User\\Downloads\\geckodriver.exe";
-
+    private static final String WIN_GECKODRIVER_PATH = "C:\\Users\\User\\Downloads\\oneMoreDirectory\\geckodriver.exe";
+    public static final String WIN_GENERATOR_FILE_PATH = "C:\\Users\\User\\Documents\\generator_file.txt";
+    public static final String LIN_GENERATOR_FILE_PATH = "./resources/generator_file.txt";
 
     public DiaryTest() {
         System.setProperty("webdriver.gecko.driver", WIN_GECKODRIVER_PATH);

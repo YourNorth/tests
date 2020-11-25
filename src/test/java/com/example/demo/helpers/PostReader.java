@@ -1,5 +1,6 @@
 package com.example.demo.helpers;
 
+import com.example.demo.DiaryTest;
 import com.example.demo.model.Post;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -11,7 +12,7 @@ public class PostReader {
 
     public static Post read(){
         Post res = null;
-        File file = new File("/home/melok/Documents/test.txt");
+        File file = new File(DiaryTest.WIN_GENERATOR_FILE_PATH);
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             res = objectMapper.readValue(file, Post.class);

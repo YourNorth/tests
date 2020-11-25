@@ -1,5 +1,6 @@
 package com.example.demo.helpers;
 
+import com.example.demo.DiaryTest;
 import com.example.demo.PostGenerator;
 import com.example.demo.model.Post;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -14,7 +15,7 @@ public class PostWriter {
     public static  void write(Post post){
         ObjectMapper mapper = new ObjectMapper();
         try {
-            File file = new File("/home/melok/Documents/test.txt");
+            File file = new File(DiaryTest.WIN_GENERATOR_FILE_PATH);
             FileWriter fileWriter = new FileWriter(file, false);
             fileWriter.append(mapper.writeValueAsString(post));
             fileWriter.flush();
