@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class PostHelper extends HelperBase {
     public void addPost(WebDriver driver, Post post) {
         driver.findElement(By.id("DiText")).click();
-        driver.findElement(By.id("DiText")).sendKeys(post.getTest());
+        driver.findElement(By.id("DiText")).sendKeys(post.getText());
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {

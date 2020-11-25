@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.helpers.LoginHelper;
+import com.example.demo.helpers.LogoutHelper;
 import com.example.demo.helpers.NavigationHelper;
 import com.example.demo.helpers.PostHelper;
 import com.example.demo.model.Post;
@@ -15,6 +16,8 @@ import java.util.Map;
 
 @Data
 public class ApplicationManager {
+
+    private static ApplicationManager app;
     private Map<String, Object> vars;
     JavascriptExecutor js;
     private WebDriver driver;
@@ -23,6 +26,7 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private LoginHelper loginHelper;
     private PostHelper postHelper;
+    private LogoutHelper logoutHelper;
 
 
     private User user;
@@ -36,8 +40,26 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper();
         loginHelper = new LoginHelper();
         postHelper = new PostHelper();
+        logoutHelper = new LogoutHelper();
         user = new User("Andrey228", "qwerty007");
         post1 = new Post("3е задание");
         post2 = new Post("3е задание++");
+    }
+
+    public static ApplicationManager getInstance() {
+
+        if (app==null)
+
+        {
+
+            ApplicationManager newInstance = new ApplicationManager();
+
+            newInstance.navigationHelper.openHomePage(newInstance.getDriver());
+
+            app = newInstance;
+
+        }
+
+        return app;
     }
 }

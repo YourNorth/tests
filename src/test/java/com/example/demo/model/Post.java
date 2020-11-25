@@ -11,5 +11,5 @@ import lombok.ToString;
 @ToString
 public class Post {
 
-    private String test;
+    private String text;
 }
