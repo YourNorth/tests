@@ -1,10 +1,8 @@
 package com.example.demo;
 
-import com.example.demo.helpers.LoginHelper;
-import com.example.demo.helpers.LogoutHelper;
-import com.example.demo.helpers.NavigationHelper;
-import com.example.demo.helpers.PostHelper;
+import com.example.demo.helpers.*;
 import com.example.demo.model.Post;
+import com.example.demo.model.Setting;
 import com.example.demo.model.User;
 import lombok.Data;
 import org.openqa.selenium.JavascriptExecutor;
@@ -29,19 +27,23 @@ public class ApplicationManager {
     private LogoutHelper logoutHelper;
 
 
-    private User user;
-    private Post post1;
+    private final User user1;
+    private final User user;
+    private final Post post1;
     private Post post2;
 
     public ApplicationManager(){
         driver = new FirefoxDriver();
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
-        navigationHelper = new NavigationHelper();
+        Setting setting = new SettingReader().read();
+        user = setting.getUser();
+        String url = setting.getUrl();
+        navigationHelper = new NavigationHelper(url);
         loginHelper = new LoginHelper();
         postHelper = new PostHelper();
         logoutHelper = new LogoutHelper();
-        user = new User("Andrey228", "qwerty007");
+        user1 = new User("Andrey227", "qwerty007");
         post1 = new Post("3е задание");
         post2 = new Post("3е задание++");
     }
